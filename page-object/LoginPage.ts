@@ -16,11 +16,6 @@ export class LoginPage{
         this.signinButton = page.locator('#signin_button')
     }
 
-    async visit(){
-        await this.page.goto('http://zero.webappsecurity.com/index.html')
-        await this.signinButton.click()
-    }
-
     async login(username: string,password: string){
         await this.usernameInput.type(username.trim())
         await this.passwordInput.type(password.trim())
