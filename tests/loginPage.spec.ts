@@ -1,10 +1,14 @@
-import {test,expect} from '@playwright/test'
+import {test} from '@playwright/test'
 import {LoginPage} from '../page-object/LoginPage'
+import {HomePage} from '../page-object/HomePage'
 test.describe.parallel('Login Page Successfully or Not',()=>{
     let loginPage: LoginPage
+    let homePage: HomePage
     test.beforeEach(async ({page})=>{
         loginPage = new LoginPage(page)
-        await loginPage.visit()
+        homePage = new HomePage(page)
+        await homePage.visitHomePage()
+        await homePage.clickSiginButton()
     })
 
     test('should login unsuccessfully',async()=>{
