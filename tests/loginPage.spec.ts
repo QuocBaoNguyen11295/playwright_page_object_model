@@ -16,9 +16,9 @@ test.describe.parallel('Login Page Successfully or Not',()=>{
         await loginPage.assertErrorMessage()
     })
 
-    test('should login successfully',async()=>{
+    test('should login successfully',async({page})=>{
         await loginPage.login('username','password')
-        await loginPage.assertNoErrorMessage()
+        await loginPage.assertNoErrorMessage(page)
     })
 
     test.afterEach(async ({page})=>{

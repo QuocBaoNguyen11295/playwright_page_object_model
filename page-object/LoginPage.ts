@@ -1,6 +1,7 @@
 import {expect,Locator,Page} from '@playwright/test'
+import { BasePage } from './BasePage'
 
-export class LoginPage{
+export class LoginPage extends BasePage{
     readonly page: Page
     readonly usernameInput: Locator
     readonly passwordInput: Locator
@@ -8,7 +9,7 @@ export class LoginPage{
     readonly errorMessage: Locator
     readonly signinButton: Locator
     constructor(page: Page){
-        this.page = page
+        super(page)
         this.usernameInput = page.locator('#user_login')
         this.passwordInput = page.locator('#user_password')
         this.submitButton = page.locator('input[name="submit"]')
@@ -27,7 +28,8 @@ export class LoginPage{
         await expect(this.errorMessage).toContainText('Login and/or password are wrong.')
     }
 
-    async assertNoErrorMessage(){
+    async assertNoErrorMessage(page:Page){
         await expect(this.errorMessage).not.toBeVisible()
+        await page.goto('http://zero.webappsecurity.com/index.html')
     }
 }

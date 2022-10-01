@@ -1,10 +1,11 @@
 import {expect,Page,Locator} from '@playwright/test'
+import { BasePage } from './BasePage'
 
-export class SearchPage{
+export class SearchPage extends BasePage{
     readonly page: Page
     readonly searchResult: Locator
     constructor(page: Page){
-        this.page = page
+        super(page)
         this.searchResult = page.locator('.top_offset > ul')
     }
 
