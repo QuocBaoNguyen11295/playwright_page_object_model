@@ -4,11 +4,13 @@ export class HomePage{
     readonly signinButton: Locator
     readonly searchText: Locator
     readonly feedbackTab: Locator
+    readonly checkAccountActivity: Locator
     constructor(page:Page){
         this.page = page
         this.signinButton = page.locator('#signin_button')
         this.searchText = page.locator('#searchTerm')
         this.feedbackTab = page.locator('#feedback')
+        this.checkAccountActivity = page.locator('#account_activity_link')
     }
 
     async visitHomePage(){
@@ -28,4 +30,7 @@ export class HomePage{
         await this.feedbackTab.click()
     }
 
+    async openCheckAccountActivity(){
+        await this.checkAccountActivity.click()
+    }
 }
